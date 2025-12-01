@@ -1,0 +1,106 @@
+---
+title: "datainsightR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{datainsightR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(datainsightR)
+library(dplyr)
+```
+
+***Introduction
+
+The datainsightR package provides lightweight tools for quick data cleaning
+and exploratory analysis. It is designed to help users summarize missing values,
+clean column names, detect outliers, and generate basic descriptive statistics
+with minimal code.
+
+This vignette demonstrates the core functions and how they can be used
+in a typical workflow.
+
+
+**1. Summarizing Missing Data
+
+The summarize_missing() function counts the number of missing values
+in each column of a data frame.
+
+```{r}
+df <- data.frame(
+a = c(1, 2, NA, 4),
+b = c("x", NA, "y", "z")
+)
+
+summarize_missing(df)
+```
+
+**2. Cleaning Column Names
+
+The clean_names() function standardizes column names by:
+
+converting to lowercase
+
+replacing special characters with _
+
+removing leading/trailing underscores
+```{r}
+messy <- data.frame(
+"First Name" = 1:3,
+"Value-Amount$" = c(10, 20, 30)
+)
+
+clean_names(messy)
+```
+
+**3. Detecting Outliers
+
+The debug_outliers() function identifies numeric outliers
+based on the 1.5 × IQR rule.
+```{r}
+values <- c(1, 2, 3, 4, 100, 150)
+debug_outliers(values)
+```
+
+**4. Quick Descriptive Statistics
+
+The quick_describe() function computes:
+
+mean
+
+median
+
+standard deviation
+
+minimum
+
+maximum
+
+for all numeric columns.
+```{r}
+quick_describe(mtcars)
+```
+
+***Conclusion
+
+The datainsightR package provides a compact set of utilities
+that streamline basic data cleaning and exploratory analysis tasks.
+
+Future extensions may include:
+
+correlation heatmaps
+
+automated EDA reports
+
+more robust data validation tools
+
+Thank you for using datainsightR!

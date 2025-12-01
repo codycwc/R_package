@@ -2,7 +2,7 @@ Package: datainsightR
 Title: Quick Data Cleaning and Exploratory Insights
 Version: 0.0.0.9000
 Authors@R: 
-    Cody Copenhaver [aut, cre]
+    Authors@R: person("Cody", "Copenhaver", role = c("aut","cre"))
 Description: A lightweight toolkit designed to simplify data exploration and cleaning. 
     Includes functions for summarizing missing values, detecting outliers, cleaning 
     column names, generating quick descriptive statistics, and visualizing correlations.
@@ -12,4 +12,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
